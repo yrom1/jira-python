@@ -1,0 +1,23 @@
+name: Test jira
+on:
+  push:
+  schedule:
+    - cron: "0 0 * * *"
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test ENV SECRETS
+        env: # Or as an environment variable
+          JIRA_USERNAME: ${{ secrets.JIRA_USERNAME }}
+          JIRA_PASSWORD: ${{ secrets.JIRA_PASSWORD }}
+      - name: Get source
+        uses: actions/checkout@v2
+      - name: Get Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9"
+      - name: pip install
+        run: pip install -r requirements.txt
+      - name: Test it all!
+        run: python3 main.py
