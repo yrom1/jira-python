@@ -18,5 +18,6 @@ jobs:
       - name: Test it all!
         run: python3 main.py
         env:
+          SECRET_TEST: ${{ secrets.SECRET_TEST }}
           JIRA_USERNAME: ${{ secrets.JIRA_USERNAME }}
           JIRA_PASSWORD: ${{ secrets.JIRA_PASSWORD }}
