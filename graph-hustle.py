@@ -56,8 +56,9 @@ def save_plot(x, y):
     plt.plot(x, y, color=BLUE)
     fixed_aspect_ratio(ASPECT_RATIO)
     plt.grid(True, color=BLACK, alpha=GRID_ALPHA)
+    plt.ylabel('# Done Issues', fontsize=FONTSIZE)
     plt.title(
-        f"Done Jira Issues in Past 30 Days",
+        f"LYFE Project Hustle",
         color=BLACK,
         fontsize=FONTSIZE,
     )
