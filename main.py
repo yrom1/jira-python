@@ -2,7 +2,6 @@ import datetime
 import os
 
 from dateutil import parser
-
 from jira import JIRA
 
 today = datetime.datetime.today()
@@ -14,15 +13,17 @@ jira = JIRA(
     basic_auth=(os.environ["JIRA_USERNAME"], os.environ["JIRA_PASSWORD"]),
 )
 
-issues = jira.search_issues('project = LYFE AND status = Done')
+issues = jira.search_issues("project = LYFE AND status = Done")
 
 for issue in issues:
-    d = parser.parse(issue.fields.updated)
+    d = parser.parse(issue.fields.updated)  # type: ignore
     d_tuple = (d.year, d.month, d.day)
     if d_tuple in dates_counter:
         dates_counter[d_tuple] += 1
 
-DAYS, COUNTS = list(dates_counter.keys()), list(dates_counter.values())
+DAYS, COUNTS = list(
+    f"{str(x)}-{str(y).zfill(2)}-{str(z).zfill(2)}" for x, y, z in dates_counter.keys()
+), list(dates_counter.values())
 
 # JIRA args
 # server: str = None,
