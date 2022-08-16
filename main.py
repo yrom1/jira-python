@@ -5,7 +5,7 @@ from dateutil import parser
 from jira import JIRA
 
 today = datetime.datetime.today()
-dates = [today - datetime.timedelta(days=x) for x in range(30)]
+dates = [today - datetime.timedelta(days=x) for x in range(14)]
 dates_counter = {(x.year, x.month, x.day): 0 for x in dates}
 
 jira = JIRA(
