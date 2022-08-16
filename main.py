@@ -1,12 +1,28 @@
+import datetime
 import os
-from typing import *
+
+from dateutil import parser
 
 from jira import JIRA
 
-auth_jira = JIRA(
+today = datetime.datetime.today()
+dates = [today - datetime.timedelta(days=x) for x in range(30)]
+dates_counter = {(x.year, x.month, x.day): 0 for x in dates}
+
+jira = JIRA(
     server="https://yrom1.atlassian.net/",
     basic_auth=(os.environ["JIRA_USERNAME"], os.environ["JIRA_PASSWORD"]),
 )
+
+issues = jira.search_issues('project = LYFE AND status = Done')
+
+for issue in issues:
+    d = parser.parse(issue.fields.updated)
+    d_tuple = (d.year, d.month, d.day)
+    if d_tuple in dates_counter:
+        dates_counter[d_tuple] += 1
+
+DAYS, COUNTS = list(dates_counter.keys()), list(dates_counter.values())
 
 # JIRA args
 # server: str = None,
