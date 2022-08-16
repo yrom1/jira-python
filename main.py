@@ -3,12 +3,10 @@ from typing import *
 
 from jira import JIRA
 
-print(f'The secret of the universe is --- {os.environ["SECRET_TEST"]} --- !')
-
-# auth_jira = JIRA(
-#     server="https://yrom1.atlassian.net/",
-#     basic_auth=(os.environ["JIRA_USERNAME"], os.environ["JIRA_USERNAME"]),
-# )
+auth_jira = JIRA(
+    server="https://yrom1.atlassian.net/",
+    basic_auth=(os.environ["JIRA_USERNAME"], os.environ["JIRA_PASSWORD"]),
+)
 
 # JIRA args
 # server: str = None,
