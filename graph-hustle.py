@@ -57,7 +57,7 @@ def save_plot(x, y):
     plt.grid(True, color=BLACK, alpha=GRID_ALPHA)
     plt.ylabel('# Done Issues', fontsize=FONTSIZE)
     plt.title(
-        f"LYFE Project Hustle",
+        f"LYFE Jira Project",
         color=BLACK,
         fontsize=FONTSIZE,
     )
