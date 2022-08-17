@@ -55,7 +55,7 @@ def save_plot(x, y):
     plt.gcf().autofmt_xdate()
     fixed_aspect_ratio(ASPECT_RATIO)
     plt.grid(True, color=BLACK, alpha=GRID_ALPHA)
-    plt.ylabel('# Done Issues', fontsize=FONTSIZE)
+    plt.ylabel("# Done Issues", fontsize=FONTSIZE)
     plt.title(
         f"LYFE Jira Project",
         color=BLACK,
