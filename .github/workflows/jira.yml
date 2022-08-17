@@ -1,6 +1,5 @@
 name: Jira issues graph
 on:
-  push:
   schedule:
     - cron: "0 * * * *" # @hourly
 jobs:
@@ -23,5 +22,5 @@ jobs:
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Daily update
+          commit_message: Hourly update
           file_pattern: Jira_hustle_graph.png
