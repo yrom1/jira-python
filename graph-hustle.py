@@ -14,9 +14,6 @@ DATE_FORMAT = r"%Y-%m-%d"
 DPI = 300
 GRID_ALPHA = 0.05
 ASPECT_RATIO = 0.15
-FONT_ENTRY = font_manager.FontEntry(fname="SFMono-Regular.otf", name="SFMono-Regular")
-font_manager.fontManager.ttflist.insert(0, FONT_ENTRY)
-matplotlib.rcParams["font.family"] = FONT_ENTRY.name
 
 
 def fixed_aspect_ratio(ratio):
@@ -32,35 +29,13 @@ def fixed_aspect_ratio(ratio):
 
 
 def save_plot(x, y):
-    # https://olgabotvinnik.com/blog/prettyplotlib-painlessly-create-beautiful-matplotlib/
-    plt.style.use("grayscale")
-    mpl.rcParams["font.family"] = FONT
-    spines_to_remove = ["top", "right"]
+    plt.style.use("./deeplearning.mplstyle")
     fig, ax = plt.subplots(1)
-    for spine in spines_to_remove:
-        ax.spines[spine].set_visible(False)
-    ax.xaxis.set_ticks_position("none")
-    ax.yaxis.set_ticks_position("none")
-    spines_to_keep = ["bottom", "left"]
-    for spine in spines_to_keep:
-        ax.spines[spine].set_linewidth(0.5)
-        ax.spines[spine].set_color(BLACK)
-    ax.xaxis.label.set_color(BLACK)
-    ax.tick_params(axis="x", colors=BLACK)
-    plt.xticks(fontsize=FONTSIZE)
-    ax.yaxis.label.set_color(BLACK)
-    ax.tick_params(axis="y", colors=BLACK)
-    plt.yticks(fontsize=FONTSIZE)
-    ax.bar(x, y, **{"color": f"{BLUE}"})  # , "marker": "."})
+    ax.bar(x, y)
     plt.gcf().autofmt_xdate()
     fixed_aspect_ratio(ASPECT_RATIO)
-    plt.grid(True, color=BLACK, alpha=GRID_ALPHA)
-    plt.ylabel("# Done Issues", fontsize=FONTSIZE)
-    plt.title(
-        f"LYFE Jira Project",
-        color=BLACK,
-        fontsize=FONTSIZE,
-    )
+    plt.ylabel("# Done Issues")
+    plt.title("LYFE Jira Project")
     plt.savefig("Jira_hustle_graph.png", bbox_inches="tight", dpi=DPI, transparent=True)
 
 
