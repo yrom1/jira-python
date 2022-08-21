@@ -1,18 +1,8 @@
-import matplotlib
-import matplotlib as mpl
 import matplotlib.pyplot as plt
-from matplotlib import font_manager
 
 from main import COUNTS, DAYS
 
-FONT_FILENAME = "SFMono-Regular.ttf"
-FONT = FONT_FILENAME[:-4]
-FONTSIZE = 6
-BLUE = "#0969da"
-BLACK = "#768390"
-DATE_FORMAT = r"%Y-%m-%d"
 DPI = 300
-GRID_ALPHA = 0.05
 ASPECT_RATIO = 0.15
 
 
