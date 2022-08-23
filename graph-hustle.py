@@ -65,4 +65,4 @@ def save_plot(x, y):
 
 
 if __name__ == "__main__":
-    save_plot(DAYS, COUNTS)
+    save_plot(DAYS[::-1], COUNTS[::-1])
