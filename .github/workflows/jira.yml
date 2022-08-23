@@ -1,5 +1,6 @@
 name: Jira issues graph
 on:
+  push:
   schedule:
     - cron: "0 * * * *" # @hourly
 jobs:
