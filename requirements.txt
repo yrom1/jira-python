@@ -1,3 +1,4 @@
 jira
 python-dateutil
 matplotlib
+pytz
