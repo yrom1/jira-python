@@ -1,12 +1,17 @@
 import datetime
 import os
 
+import pytz
 from dateutil import parser
 from jira import JIRA
 
+est = pytz.timezone("US/Eastern")
+utc = pytz.utc
+fmt = "%Y-%m-%d"
+
 _today = datetime.datetime.today()
 _dates = [_today - datetime.timedelta(days=x) for x in range(14)]
-_dates_counter = {(x.year, x.month, x.day): 0 for x in _dates}
+_dates_counter = {x.strftime(fmt): 0 for x in _dates}
 
 _jira = JIRA(
     server="https://yrom1.atlassian.net/",
@@ -17,13 +22,12 @@ _issues = _jira.search_issues("project = LYFE AND status = Done")
 
 for issue in _issues:
     _d = parser.parse(issue.fields.updated)  # type: ignore
-    _d_tuple = (_d.year, _d.month, _d.day)
-    if _d_tuple in _dates_counter:
-        _dates_counter[_d_tuple] += 1
+    assert type(_d) == datetime.datetime
+    _d_date = _d.astimezone(est).strftime(fmt)
+    if _d_date in _dates_counter:
+        _dates_counter[_d_date] += 1
 
-DAYS = list(
-    f"{str(x)}-{str(y).zfill(2)}-{str(z).zfill(2)}" for x, y, z in _dates_counter.keys()
-)
+DAYS = list(_dates_counter.keys())
 COUNTS = list(_dates_counter.values())
 
 # JIRA args
