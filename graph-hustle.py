@@ -7,7 +7,7 @@ from main import COUNTS, DAYS
 
 FONT_FILENAME = "SFMono-Regular.ttf"
 FONT = FONT_FILENAME[:-4]
-FONTSIZE = 6
+FONTSIZE = 9
 BLUE = "#0969da"
 BLACK = "#768390"
 DATE_FORMAT = r"%Y-%m-%d"
