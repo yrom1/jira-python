@@ -1,8 +1,10 @@
+import datetime as dt
+
 import matplotlib
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
-import datetime as dt
+
 from main import COUNTS, DAYS
 
 # FONT_FILENAME = "SFMono-Regular.ttf"
@@ -73,8 +75,10 @@ def save_plot(x, y):
         "# Completed Issues"
         # , fontsize=FONTSIZE
     )
+    with open("ISSUES_DONE_TODAY", "r") as f:
+        ISSUES_DONE_TODAY = int(f.read())
     plt.title(
-        f"LIFE Jira Project",
+        f"{ISSUES_DONE_TODAY} Issues Completed Today in LIFE Jira Project",
         # color=BLACK,
         # fontsize=FONTSIZE,
     )
