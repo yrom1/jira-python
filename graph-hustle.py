@@ -40,7 +40,7 @@ def save_plot(x, y):
     # plt.style.use("grayscale")
     # mpl.rcParams["font.family"] = FONT
     # spines_to_remove = ["top", "right"]
-    matplotlib.rc("font", **{"size": 18})
+    matplotlib.rc("font", **{"size": 20})
     from matplotlib.figure import figaspect
 
     w, h = figaspect(ASPECT_RATIO)
