@@ -13,7 +13,7 @@ from main import COUNTS, DAYS
 DATE_FORMAT = r"%Y-%m-%d"
 DPI = 300
 GRID_ALPHA = 0.05
-ASPECT_RATIO = 0.15
+ASPECT_RATIO = 0.20
 # FONT_ENTRY = font_manager.FontEntry(fname="SFMono-Regular.otf", name="SFMono-Regular")
 # font_manager.fontManager.ttflist.insert(0, FONT_ENTRY)
 # matplotlib.rcParams["font.family"] = FONT_ENTRY.name
@@ -40,6 +40,7 @@ def save_plot(x, y):
     # plt.style.use("grayscale")
     # mpl.rcParams["font.family"] = FONT
     # spines_to_remove = ["top", "right"]
+    matplotlib.rc("font", **{"size": 18})
     from matplotlib.figure import figaspect
 
     w, h = figaspect(ASPECT_RATIO)
