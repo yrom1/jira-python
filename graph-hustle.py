@@ -55,7 +55,7 @@ def save_plot(x, y):
     # ax.yaxis.label.set_color(BLACK)
     # ax.tick_params(axis="y", colors=BLACK)
     # plt.yticks(fontsize=FONTSIZE)
-    # ax.bar(x, y, **{"color": f"{BLUE}"})  # , "marker": "."})
+    ax.bar(x, y)
     # plt.gcf().autofmt_xdate()
     # fixed_aspect_ratio(ASPECT_RATIO)
     # plt.grid(True, color=BLACK, alpha=GRID_ALPHA)
