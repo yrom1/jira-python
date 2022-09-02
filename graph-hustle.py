@@ -2,7 +2,7 @@ import matplotlib
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
-
+import datetime as dt
 from main import COUNTS, DAYS
 
 # FONT_FILENAME = "SFMono-Regular.ttf"
@@ -13,7 +13,7 @@ from main import COUNTS, DAYS
 DATE_FORMAT = r"%Y-%m-%d"
 DPI = 300
 GRID_ALPHA = 0.05
-ASPECT_RATIO = 0.15
+ASPECT_RATIO = 0.25
 # FONT_ENTRY = font_manager.FontEntry(fname="SFMono-Regular.otf", name="SFMono-Regular")
 # font_manager.fontManager.ttflist.insert(0, FONT_ENTRY)
 # matplotlib.rcParams["font.family"] = FONT_ENTRY.name
@@ -31,6 +31,10 @@ ASPECT_RATIO = 0.15
 #     plt.gca().set_aspect(ratio * (xrange / yrange), adjustable="box")
 
 
+def format_dates(dates: list[str]):
+    return [dt.datetime.strptime(date, DATE_FORMAT) for date in dates]
+
+
 def save_plot(x, y):
     # https://olgabotvinnik.com/blog/prettyplotlib-painlessly-create-beautiful-matplotlib/
     # plt.style.use("grayscale")
@@ -40,10 +44,7 @@ def save_plot(x, y):
 
     w, h = figaspect(ASPECT_RATIO)
     fig, ax = plt.subplots(1, figsize=(w, h))
-    ax.yaxis.get_major_locator().set_params(integer=True)
-    ax.xaxis.set_major_formatter(
-        mpl.dates.ConciseDateFormatter(ax.xaxis.get_major_locator())
-    )
+
     # for spine in spines_to_remove:
     # ax.spines[spine].set_visible(False)
     # ax.xaxis.set_ticks_position("none")
@@ -62,6 +63,12 @@ def save_plot(x, y):
     # plt.gcf().autofmt_xdate()
     # fixed_aspect_ratio(ASPECT_RATIO)
     # plt.grid(True, color=BLACK, alpha=GRID_ALPHA)
+
+    plt.gcf().autofmt_xdate()
+    ax.xaxis.set_major_formatter(
+        mpl.dates.ConciseDateFormatter(ax.xaxis.get_major_locator())
+    )
+
     plt.ylabel(
         "# Done Issues"
         # , fontsize=FONTSIZE
@@ -75,4 +82,4 @@ def save_plot(x, y):
 
 
 if __name__ == "__main__":
-    save_plot(DAYS[::-1], COUNTS[::-1])
+    save_plot(format_dates(DAYS[::-1]), COUNTS[::-1])
