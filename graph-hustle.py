@@ -74,7 +74,7 @@ def save_plot(x, y):
         # , fontsize=FONTSIZE
     )
     plt.title(
-        f"LYFE Jira Project",
+        f"LIFE Jira Project",
         # color=BLACK,
         # fontsize=FONTSIZE,
     )
