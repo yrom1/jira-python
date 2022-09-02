@@ -65,7 +65,6 @@ def save_plot(x, y):
     # fixed_aspect_ratio(ASPECT_RATIO)
     # plt.grid(True, color=BLACK, alpha=GRID_ALPHA)
 
-    plt.gcf().autofmt_xdate()
     ax.xaxis.set_major_formatter(
         mpl.dates.ConciseDateFormatter(ax.xaxis.get_major_locator())
     )
