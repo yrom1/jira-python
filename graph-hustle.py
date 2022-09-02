@@ -41,6 +41,9 @@ def save_plot(x, y):
     w, h = figaspect(ASPECT_RATIO)
     fig, ax = plt.subplots(1, figsize=(w, h))
     ax.yaxis.get_major_locator().set_params(integer=True)
+    ax.xaxis.set_major_formatter(
+        mpl.dates.ConciseDateFormatter(ax.xaxis.get_major_locator())
+    )
     # for spine in spines_to_remove:
     # ax.spines[spine].set_visible(False)
     # ax.xaxis.set_ticks_position("none")
@@ -55,7 +58,7 @@ def save_plot(x, y):
     # ax.yaxis.label.set_color(BLACK)
     # ax.tick_params(axis="y", colors=BLACK)
     # plt.yticks(fontsize=FONTSIZE)
-    ax.bar(x, y)
+    ax.bar(x, y, color="blue")
     # plt.gcf().autofmt_xdate()
     # fixed_aspect_ratio(ASPECT_RATIO)
     # plt.grid(True, color=BLACK, alpha=GRID_ALPHA)
