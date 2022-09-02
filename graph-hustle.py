@@ -70,7 +70,7 @@ def save_plot(x, y):
     )
 
     plt.ylabel(
-        "# Done Issues"
+        "# Completed Issues"
         # , fontsize=FONTSIZE
     )
     plt.title(
