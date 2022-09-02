@@ -30,6 +30,9 @@ for issue in _issues:
 DAYS = list(_dates_counter.keys())
 COUNTS = list(_dates_counter.values())
 
+with open("ISSUES_DONE_TODAY", "w") as f:
+    f.write(str(COUNTS[0]))
+
 # JIRA args
 # server: str = None,
 # options: Dict[str, Union[str, bool, Any]] = None,
