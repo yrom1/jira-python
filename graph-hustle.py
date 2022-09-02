@@ -13,7 +13,7 @@ from main import COUNTS, DAYS
 DATE_FORMAT = r"%Y-%m-%d"
 DPI = 300
 GRID_ALPHA = 0.05
-ASPECT_RATIO = 0.25
+ASPECT_RATIO = 0.15
 # FONT_ENTRY = font_manager.FontEntry(fname="SFMono-Regular.otf", name="SFMono-Regular")
 # font_manager.fontManager.ttflist.insert(0, FONT_ENTRY)
 # matplotlib.rcParams["font.family"] = FONT_ENTRY.name
