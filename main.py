@@ -1,6 +1,7 @@
 import datetime
 import os
 
+from zoneinfo import ZoneInfo
 import pytz
 from dateutil import parser
 from jira import JIRA
@@ -9,26 +10,26 @@ est = pytz.timezone("US/Eastern")
 utc = pytz.utc
 fmt = "%Y-%m-%d"
 
-_today = datetime.datetime.today()
-_dates = [_today - datetime.timedelta(days=x) for x in range(14)]
-_dates_counter = {x.strftime(fmt): 0 for x in _dates}
+today = datetime.datetime.now(ZoneInfo("US/Eastern"))
+dates = [today - datetime.timedelta(days=x) for x in range(14)]
+dates_counter = {x.strftime(fmt): 0 for x in dates}
 
-_jira = JIRA(
+jira = JIRA(
     server="https://yrom1.atlassian.net/",
     basic_auth=(os.environ["JIRA_USERNAME"], os.environ["JIRA_PASSWORD"]),
 )
 
-_issues = _jira.search_issues("project = LYFE AND status = Done")
+issues = jira.search_issues("project = LYFE AND status = Done")
 
-for issue in _issues:
-    _d = parser.parse(issue.fields.updated)  # type: ignore
-    assert type(_d) == datetime.datetime
-    _d_date = _d.astimezone(est).strftime(fmt)
-    if _d_date in _dates_counter:
-        _dates_counter[_d_date] += 1
+for issue in issues:
+    d = parser.parse(issue.fields.updated)  # type: ignore
+    assert type(d) == datetime.datetime
+    d_date = d.astimezone(est).strftime(fmt)
+    if d_date in dates_counter:
+        dates_counter[d_date] += 1
 
-DAYS = list(_dates_counter.keys())
-COUNTS = list(_dates_counter.values())
+DAYS = list(dates_counter.keys())
+COUNTS = list(dates_counter.values())
 
 with open("ISSUES_DONE_TODAY", "w") as f:
     f.write(str(COUNTS[0]))
