@@ -78,7 +78,7 @@ def save_plot(x, y):
     with open("ISSUES_DONE_TODAY", "r") as f:
         ISSUES_DONE_TODAY = int(f.read())
     plt.title(
-        f"{ISSUES_DONE_TODAY} Issues Completed Today in LIFE Jira Project",
+        f"{ISSUES_DONE_TODAY} {'Issue' if ISSUES_DONE_TODAY == 1 else 'Issues'} Completed Today in LIFE Jira Project",
         # color=BLACK,
         # fontsize=FONTSIZE,
     )
