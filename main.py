@@ -1,7 +1,7 @@
 import datetime
 import os
-
 from zoneinfo import ZoneInfo
+
 import pytz
 from dateutil import parser
 from jira import JIRA
@@ -11,7 +11,7 @@ utc = pytz.utc
 fmt = "%Y-%m-%d"
 
 today = datetime.datetime.now(ZoneInfo("US/Eastern"))
-dates = [today - datetime.timedelta(days=x) for x in range(14)]
+dates = [today - datetime.timedelta(days=x) for x in range(31)]
 dates_counter = {x.strftime(fmt): 0 for x in dates}
 
 jira = JIRA(

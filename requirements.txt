@@ -2,3 +2,5 @@ jira
 python-dateutil
 matplotlib
 pytz
+mypandas
+pandas
