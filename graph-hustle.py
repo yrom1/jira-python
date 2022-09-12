@@ -4,9 +4,9 @@ import matplotlib
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import pandas as pd
+import requests
 from matplotlib import font_manager
 from mypandas import MyPandas
-import requests
 
 from main import COUNTS, DAYS
 
@@ -96,8 +96,11 @@ def save_plot(x, y):
 
 
 if __name__ == "__main__":
-    save_plot(format_dates(DAYS[:14][::-1]), COUNTS[:14][::-1])
+    from main import COUNTS, DAYS
+
     df = pd.DataFrame({"date": DAYS, "issue_count": COUNTS})
+    df.to_csv("plot.csv", index=False)
+    save_plot(format_dates(DAYS), COUNTS)
     query = """
     SELECT SUM(issue_count)
     FROM df

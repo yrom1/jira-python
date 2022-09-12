@@ -34,6 +34,11 @@ COUNTS = list(dates_counter.values())
 with open("ISSUES_DONE_TODAY", "w") as f:
     f.write(str(COUNTS[0]))
 
+DAYS = DAYS[:14][::-1]
+COUNTS = COUNTS[:14][::-1]
+
+assert len(DAYS) == len(COUNTS)
+
 # JIRA args
 # server: str = None,
 # options: Dict[str, Union[str, bool, Any]] = None,
