@@ -6,9 +6,13 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from matplotlib import font_manager
 from mypandas import MyPandas
+import requests
 
 from main import COUNTS, DAYS
 
+FONTSIZE = requests.get(
+    "https://raw.githubusercontent.com/yrom1/yrom1/main/FONTSIZE"
+).text
 # FONT_FILENAME = "SFMono-Regular.ttf"
 # FONT = FONT_FILENAME[:-4]
 # FONTSIZE = 9
@@ -44,7 +48,7 @@ def save_plot(x, y):
     # plt.style.use("grayscale")
     # mpl.rcParams["font.family"] = FONT
     # spines_to_remove = ["top", "right"]
-    matplotlib.rc("font", **{"size": 20})
+    matplotlib.rc("font", **{"size": FONTSIZE})
     from matplotlib.figure import figaspect
 
     w, h = figaspect(ASPECT_RATIO)
