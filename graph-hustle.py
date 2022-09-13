@@ -98,11 +98,11 @@ def save_plot(x, y):
 if __name__ == "__main__":
     from main import COUNTS, DAYS
 
-    df = pd.DataFrame({"date": DAYS, "issue_count": COUNTS})
+    df = pd.DataFrame({"date": DAYS, "value": COUNTS})
     df.to_csv("plot.csv", index=False)
     save_plot(format_dates(DAYS), COUNTS)
     query = """
-    SELECT SUM(issue_count)
+    SELECT SUM(value)
     FROM df
     WHERE month(date) = month(now());
     """
