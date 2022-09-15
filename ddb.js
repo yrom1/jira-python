@@ -28,23 +28,35 @@ const require = createRequire(import.meta.url);
 const plot_json = require("./plot.json");
 console.log(plot_json);
 
-const put_params = {
+const fs = require('fs');
+let kpi = fs.readFileSync('./ISSUES_DONE_THIS_MONTH', 'utf8');
+console.log(kpi);
+
+const plot_params = {
     TableName: "plotsV2",
     Item: {
         "key": "jira",
         "value": plot_json,
     },
 };
-const put = async () => {
+const kpi_params = {
+    TableName: "plotsV2",
+    Item: {
+        "key": "JIRA_ISSUES_DONE_THIS_MONTH",
+        "value": kpi,
+    },
+};
+const put = async (x) => {
     try {
-        const data = await ddbDocClient.send(new PutCommand(put_params));
+        const data = await ddbDocClient.send(new PutCommand(x));
         console.log("Success - item added or updated", data);
         return data;
     } catch (err) {
         console.log("Error", err);
     }
 };
-// put();
+put(plot_params);
+put(kpi_params);
 
 const get_params = {
     TableName: "plotsV2",
@@ -63,4 +75,4 @@ const get = async () => {
         console.log("Error", err);
     }
 };
-get();
+// get();
