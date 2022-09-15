@@ -44,13 +44,13 @@ const put = async () => {
         console.log("Error", err);
     }
 };
-put();
+// put();
 
 const get_params = {
     TableName: "plotsV2",
 
     Key: {
-        "key": "test3",
+        "key": "jira",
     },
 };
 const get = async () => {
@@ -63,4 +63,4 @@ const get = async () => {
         console.log("Error", err);
     }
 };
-// get();
+get();
