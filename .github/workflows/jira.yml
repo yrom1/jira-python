@@ -22,6 +22,10 @@ jobs:
         env:
           JIRA_USERNAME: ${{ secrets.JIRA_USERNAME }}
           JIRA_PASSWORD: ${{ secrets.JIRA_PASSWORD }}
+      - name: Install npm
+          run: npm install
+      - name: Dynamo put
+          run: node ddb.js
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
