@@ -100,7 +100,7 @@ if __name__ == "__main__":
 
     df = pd.DataFrame({"date": DAYS, "value": COUNTS})
     df.to_json("plot.json")
-    save_plot(format_dates(DAYS), COUNTS)
+    # save_plot(format_dates(DAYS), COUNTS)
     query = """
     SELECT SUM(value)
     FROM df
