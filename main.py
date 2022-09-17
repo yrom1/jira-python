@@ -31,8 +31,8 @@ for issue in issues:
 DAYS = list(dates_counter.keys())
 COUNTS = list(dates_counter.values())
 
-with open("ISSUES_DONE_TODAY", "w") as f:
-    f.write(str(COUNTS[0]))
+# with open("ISSUES_DONE_TODAY", "w") as f:
+#     f.write(str(COUNTS[0]))
 
 DAYS = DAYS[:14][::-1]
 COUNTS = COUNTS[:14][::-1]

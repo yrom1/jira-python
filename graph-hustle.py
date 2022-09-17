@@ -1,5 +1,6 @@
 import datetime as dt
 
+from cloud_dictionary import Cloud
 import matplotlib
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -100,13 +101,11 @@ if __name__ == "__main__":
 
     df = pd.DataFrame({"date": DAYS, "value": COUNTS})
     df.to_json("plot.json")
-    # save_plot(format_dates(DAYS), COUNTS)
+    with open('plot.json', 'r') as f:
+        Cloud('plotsV2')['jira'] = f.read()
     query = """
     SELECT SUM(value)
     FROM df
     WHERE month(date) = month(now());
     """
-    with open("ISSUES_DONE_THIS_MONTH", "w") as f:
-        f.write(
-            str(int(MyPandas("mysql://root:root@localhost")(query, locals()).values[0]))
-        )
+    Cloud('kpiV1')["ISSUES_DONE_THIS_MONTH"] = int(MyPandas("mysql://root:root@localhost")(query, locals()).values[0])
