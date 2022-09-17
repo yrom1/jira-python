@@ -24,7 +24,7 @@ jobs:
       - name: Pip install
         run: pip install -r requirements.txt
       - name: Store data
-        run: python3 dynamo.py
+        run: python3 cloud.py
         env:
           JIRA_USERNAME: ${{ secrets.JIRA_USERNAME }}
           JIRA_PASSWORD: ${{ secrets.JIRA_PASSWORD }}
