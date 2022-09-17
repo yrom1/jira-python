@@ -11,9 +11,9 @@ from mypandas import MyPandas
 
 from main import COUNTS, DAYS
 
-FONTSIZE = requests.get(
-    "https://raw.githubusercontent.com/yrom1/yrom1/main/FONTSIZE"
-).text
+# FONTSIZE = requests.get(
+#     "https://raw.githubusercontent.com/yrom1/yrom1/main/FONTSIZE"
+# ).text
 # FONT_FILENAME = "SFMono-Regular.ttf"
 # FONT = FONT_FILENAME[:-4]
 # FONTSIZE = 9
