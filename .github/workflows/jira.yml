@@ -26,8 +26,6 @@ jobs:
           python-version: "3.10"
       - name: Start MySQL
         run: sudo systemctl start mysql.service # user:root password:root
-      - name: Debug submodules
-        run: tail ./star-schema/stardb.py
       - name: Symbolic link(s)
         run: source link.sh
       - name: Pip install
