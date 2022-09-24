@@ -2,7 +2,6 @@ import datetime
 import os
 from zoneinfo import ZoneInfo
 
-from cloud_dictionary import Cloud
 import pytz
 from dateutil import parser
 from jira import JIRA
@@ -31,11 +30,6 @@ for issue in issues:
 
 DAYS = list(dates_counter.keys())
 COUNTS = list(dates_counter.values())
-
-# TODO move to cloud.py
-Cloud('kpiV1')["ISSUES_DONE_TODAY"] = int(COUNTS[0])
-
 DAYS = DAYS[:14][::-1]
 COUNTS = COUNTS[:14][::-1]
-
 assert len(DAYS) == len(COUNTS)
