@@ -18,12 +18,16 @@ jobs:
     steps:
       - name: Get source
         uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
       - name: Get Python
         uses: actions/setup-python@v2
         with:
           python-version: "3.10"
       - name: Start MySQL
         run: sudo systemctl start mysql.service # user:root password:root
+      - name: Debug submodules
+        run: tail ./star-schema/stardb.py
       - name: Symbolic link(s)
         run: source link.sh
       - name: Pip install
