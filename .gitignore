@@ -2,6 +2,7 @@
 PRIVATE.sh
 package-lock.json
 node_modules
+stardb*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
